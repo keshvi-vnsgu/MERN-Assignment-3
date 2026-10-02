@@ -1,0 +1,21 @@
+<h1>Add Employee Page</h1>
+
+<form method="post" action="/emp/add">
+    Name : <input type="text" name="ename">
+    <br><br>
+    Email : <input type="text" name="email">
+    <br><br>
+    Department : <input type="text" name="dept">
+    <br><br>
+    Basic Salary : <input type="number" name="bs">
+    <br><br>
+    HRA : <input type="number" name="hra">
+    <br><br>
+    DA : <input type="number" name="da">
+    <br><br>
+        <% if(locals.err){ %>
+            <span style="color: red;"><%= err %></span>
+        <% } %>
+        <br>
+    <button type="submit">Add Employee</button>
+</form>

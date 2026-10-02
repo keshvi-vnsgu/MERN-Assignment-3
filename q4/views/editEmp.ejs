@@ -1,0 +1,31 @@
+<h1>Edit Employee</h1>
+
+<form action="/emp/edit/<%= emp._id %>" method="POST">
+
+    <label>Name:</label>
+    <input type="text" name="ename" value="<%= emp.name %>">
+    <br><br>
+
+    <label>Email:</label>
+    <input type="email" name="email" value="<%= emp.email %>">
+    <br><br>
+
+    <label>Department:</label>
+    <input type="text" name="dept" value="<%= emp.department %>">
+    <br><br>
+
+    <label>Basic Salary:</label>
+    <input type="number" name="bs" value="<%= emp.basicSalary %>">
+    <br><br>
+
+    <label>HRA:</label>
+    <input type="number" name="hra" value="<%= emp.hra %>">
+    <br><br>
+
+    <label>DA:</label>
+    <input type="number" name="da" value="<%= emp.da %>">
+    <br><br>
+
+    <button type="submit">Update Employee</button>
+
+</form>

@@ -1,0 +1,33 @@
+<h1>Emplyees List</h1>
+
+<table style="width: 80%;">
+  <thead>
+    <tr>
+      <td>EmpID</td>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Department</td>
+      <td>Gross Salary</td>
+      <td>Action</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% empList.forEach((e)=>{ %>
+    <tr>
+      <td><%= e.empid %></td>
+      <td><%= e.name %></td>
+      <td><%= e.email %></td>
+      <td><%= e.department %></td>
+      <td><%= e.grossSalary %></td>
+      <td>
+          <button>
+            <a href="/emp/edit/<%= e._id %>">Edit</a>
+          </button>
+          <form action="/emp/delete/<%= e._id %>" method="POST" style="display:inline;">
+              <button type="submit">Delete</button>
+          </form>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

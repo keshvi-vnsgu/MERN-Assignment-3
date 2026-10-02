@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+</head>
+
+<body>
+
+<h1>User Registration</h1>
+
+<form action="/register"
+      method="POST"
+      enctype="multipart/form-data">
+
+
+    <!-- USERNAME -->
+
+    <label>Username:</label>
+
+    <input
+        type="text"
+        name="username"
+        value="<%= oldData ? oldData.username || '' : '' %>"
+    >
+
+    <br><br>
+
+
+    <!-- PASSWORD -->
+
+    <label>Password:</label>
+
+    <input
+        type="password"
+        name="password"
+        value="<%= oldData ? oldData.password || '' : '' %>"
+    >
+
+    <br><br>
+
+
+    <!-- CONFIRM PASSWORD -->
+
+    <label>Confirm Password:</label>
+
+    <input
+        type="password"
+        name="confirmPassword"
+        value="<%= oldData ? oldData.confirmPassword || '' : '' %>"
+    >
+
+    <br><br>
+
+
+    <!-- EMAIL -->
+
+    <label>Email:</label>
+
+    <input
+        type="email"
+        name="email"
+        value="<%= oldData ? oldData.email || '' : '' %>"
+    >
+
+    <br><br>
+
+
+    <!-- GENDER -->
+
+    <label>Gender:</label>
+
+    <input
+        type="radio"
+        name="gender"
+        value="Male"
+        <%= oldData && oldData.gender === "Male" ? "checked" : "" %>
+    >
+
+    Male
+
+
+    <input
+        type="radio"
+        name="gender"
+        value="Female"
+        <%= oldData && oldData.gender === "Female" ? "checked" : "" %>
+    >
+
+    Female
+
+    <br><br>
+
+
+    <!-- HOBBIES -->
+
+    <label>Hobbies:</label>
+
+    <br>
+
+    <input
+        type="checkbox"
+        name="hobbies"
+        value="Reading"
+        <%= oldData && oldData.hobbies &&
+            (Array.isArray(oldData.hobbies)
+                ? oldData.hobbies.includes("Reading")
+                : oldData.hobbies === "Reading")
+            ? "checked"
+            : "" %>
+    >
+
+    Reading
+
+
+    <input
+        type="checkbox"
+        name="hobbies"
+        value="Gaming"
+        <%= oldData && oldData.hobbies &&
+            (Array.isArray(oldData.hobbies)
+                ? oldData.hobbies.includes("Gaming")
+                : oldData.hobbies === "Gaming")
+            ? "checked"
+            : "" %>
+    >
+
+    Gaming
+
+
+    <input
+        type="checkbox"
+        name="hobbies"
+        value="Sports"
+        <%= oldData && oldData.hobbies &&
+            (Array.isArray(oldData.hobbies)
+                ? oldData.hobbies.includes("Sports")
+                : oldData.hobbies === "Sports")
+            ? "checked"
+            : "" %>
+    >
+
+    Sports
+
+    <br><br>
+
+
+    <!-- PROFILE PICTURE -->
+
+    <label>Profile Picture:</label>
+
+    <input
+        type="file"
+        name="profilePic"
+    >
+
+    <br><br>
+
+
+    <!-- OTHER PICTURES -->
+
+    <label>Other Pictures:</label>
+
+    <input
+        type="file"
+        name="otherPics"
+        multiple
+    >
+
+    <br><br>
+
+
+    <button type="submit">
+        Register
+    </button>
+
+</form>
+
+<% if (typeof errors !== "undefined" && errors.length > 0) { %>
+
+    <div style="color: red;">
+        <h3>Errors:</h3>
+
+        <ul>
+            <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    </div>
+
+<% } %>
+</body>
+</html>

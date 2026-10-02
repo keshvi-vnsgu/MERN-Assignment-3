@@ -1,0 +1,13 @@
+<h1>Login Page</h1>
+
+<form method="post" action="/login">
+    Username : <input type="text" name="uname">
+    <br><br>
+    Password : <input type="text" name="passwd">
+    <br>
+        <% if(locals.err){ %>
+            <span style="color: red;"><%= err %></span>
+        <% } %>
+        <br>
+    <button type="submit">Login</button>
+</form>

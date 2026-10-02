@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Registration Details</title>
+
+    <style>
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+
+        img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin: 5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Registration Details</h1>
+
+
+    <table>
+
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+
+
+        <tr>
+            <td>Username</td>
+            <td>
+                <%= data.username %>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Password</td>
+            <td>
+                <%= data.password %>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Confirm Password</td>
+            <td>
+                <%= data.confirmPassword %>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Email</td>
+            <td>
+                <%= data.email %>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Gender</td>
+            <td>
+                <%= data.gender %>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Hobbies</td>
+            <td>
+
+                <% if (Array.isArray(data.hobbies)) { %>
+
+                    <%= data.hobbies.join(", ") %>
+
+                <% } else { %>
+
+                    <%= data.hobbies %>
+
+                <% } %>
+
+            </td>
+        </tr>
+
+
+        <tr>
+
+            <td>Profile Picture</td>
+
+            <td>
+
+                <% if (files.profilePic) { %>
+
+                    <img
+                        src="/uploads/<%= files.profilePic[0].filename %>"
+                    >
+
+                    <br>
+
+                    <a href="/download/<%= files.profilePic[0].filename %>" onclick="downloadFile(event, this.href)">
+                        Download Profile Picture
+                    </a>
+
+                <% } %>
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>Other Pictures</td>
+
+            <td>
+
+                <% if (files.otherPics) { %>
+
+                    <% files.otherPics.forEach(file => { %>
+
+                        <div>
+
+                            <img
+                                src="/uploads/<%= file.filename %>"
+                            >
+
+                            <br>
+
+                            <a href="/download/<%= file.filename %>" onclick="downloadFile(event, this.href)">
+                                Download
+                            </a>
+
+                        </div>
+
+                    <% }) %>
+
+                <% } %>
+
+            </td>
+
+        </tr>
+
+
+    </table>
+
+</body>
+
+</html>
